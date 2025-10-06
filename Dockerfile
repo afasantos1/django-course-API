@@ -33,9 +33,9 @@ RUN rm -rf /tmp && \
         django-user && \
         mkdir -p /vol/web/media && \
         mkdir -p /vol/web/static && \
+        chmod -R +x /scripts && \
         chown -R django-user:django-user /vol && \
-        chmod -R 755 /vol && \
-        chmod -R +x /scripts
+        chmod -R 755 /vol
 
 ENV PATH="/scripts:/py/bin:$PATH"
 

@@ -1,4 +1,4 @@
-From nginxinc/nginx-unprivileged:1-alpine
+FROM nginxinc/nginx-unprivileged:1-alpine
 
 LABEL maintainer="Antonio Santos"
 
@@ -15,8 +15,10 @@ USER root
 RUN mkdir -p vol/static && \
     chmod 755 /vol/static && \
     touch /etc/nginx/conf.d/default.conf && \
+    chown nginx:nginx /etc/nginx/conf.d && \
     chown nginx:nginx /etc/nginx/conf.d/default.conf && \
-    chmod +x /run.sh
+    chmod +x /run.sh && \
+    chmod 775 /etc/nginx/conf.d
 
 VOLUME /vol/static
 
